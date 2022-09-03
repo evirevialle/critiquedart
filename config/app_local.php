@@ -44,8 +44,8 @@ return [
              */
             //'port' => 'non_standard_port_number',
 
-            'username' => 'labexcap',
-            'password' => 'omega3',
+            'username' => '',
+            'password' => '',
 
             'database' => 'critiquesdart',
             /*
