@@ -1,0 +1,253 @@
+2022-03-25 10:04:39 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquedart.v_i_e_w_toutes_les_critiques' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquedart.v_i_e_w_toutes_les_critiques' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-03-25 17:33:21 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquedart.v_i_e_w_chapitres' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquedart.v_i_e_w_chapitres' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-03-25 17:35:50 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquedart.v_i_e_w_chapitres' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquedart.v_i_e_w_chapitres' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-03-25 19:09:27 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[HY000]: General error: 1356 View 'critiquedart.VIEW_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[HY000]: General error: 1356 View 'critiquedart.VIEW_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-03-25 19:19:25 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[HY000]: General error: 1356 View 'critiquedart.VIEW_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[HY000]: General error: 1356 View 'critiquedart.VIEW_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-03-26 10:23:02 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[HY000]: General error: 1356 View 'critiquedart.view_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[HY000]: General error: 1356 View 'critiquedart.view_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-06-02 08:44:49 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquesdart.ouvrages' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'critiquesdart.ouvrages' doesn't exist in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:111
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-07-09 10:09:16 error: [Error] Class 'App\Controller\AppController' not found in /var/www/critiques_dart/src/Controller/PagesController.php on line 11
+Stack Trace:
+- /var/www/critiques_dart/vendor/composer/ClassLoader.php:480
+- /var/www/critiques_dart/vendor/composer/ClassLoader.php:346
+- spl_autoload_call - [internal], line ??- class_exists - [internal], line ??- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/TestCommand.php:254
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/TestCommand.php:131
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ControllerCommand.php:209
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ControllerCommand.php:155
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ControllerCommand.php:65
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+
+2022-07-09 10:09:43 error: [Error] Class 'App\Controller\AppController' not found in /var/www/critiques_dart/src/Controller/AppController.php on line 11
+Stack Trace:
+- /var/www/critiques_dart/vendor/composer/ClassLoader.php:480
+- /var/www/critiques_dart/vendor/composer/ClassLoader.php:346
+- spl_autoload_call - [internal], line ??- class_exists - [internal], line ??- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/TestCommand.php:254
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/TestCommand.php:131
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ControllerCommand.php:209
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ControllerCommand.php:155
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ControllerCommand.php:65
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+

@@ -1,0 +1,19 @@
+2022-06-02 09:14:22 notice: Notice (8): Array to string conversion in [/var/www/critiques_dart/vendor/twig/twig/src/Environment.php(358) : eval()'d code, line 107]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 185
+__TwigTemplate_03025994af61faae9bb93bf1254ca09859031a706516ae74114795d23420ce75::doDisplay() - ROOT/vendor/twig/twig/src/Environment.php(358) : eval()'d code, line 107
+Twig\Template::displayWithErrorHandling() - ROOT/vendor/twig/twig/src/Template.php, line 394
+Twig\Template::display() - ROOT/vendor/twig/twig/src/Template.php, line 367
+Twig\Template::render() - ROOT/vendor/twig/twig/src/Template.php, line 379
+Twig\TemplateWrapper::render() - ROOT/vendor/twig/twig/src/TemplateWrapper.php, line 40
+Cake\TwigView\View\TwigView::_evaluate() - ROOT/vendor/cakephp/twig-view/src/View/TwigView.php, line 301
+Cake\View\View::_render() - CORE/src/View/View.php, line 1138
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 84
+Bake\Utility\TemplateRenderer::generate() - ROOT/vendor/cakephp/bake/src/Utility/TemplateRenderer.php, line 101
+Bake\Command\TemplateCommand::getContent() - ROOT/vendor/cakephp/bake/src/Command/TemplateCommand.php, line 400
+Bake\Command\TemplateCommand::execute() - ROOT/vendor/cakephp/bake/src/Command/TemplateCommand.php, line 143
+Cake\Console\BaseCommand::run() - CORE/src/Console/BaseCommand.php, line 179
+Cake\Console\CommandRunner::runCommand() - CORE/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner::run() - CORE/src/Console/CommandRunner.php, line 172
+[main] - ROOT/bin/cake.php, line 12
+
