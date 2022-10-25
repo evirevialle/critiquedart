@@ -4,6 +4,9 @@
  * @var \App\Model\Entity\Critiquedart $critiquedart
  * 
  */
+
+$params = $this->request->getQueryParams();
+$uri = $this->request->getRequestTarget();
 ?>
 <article class='landing-intro'>
     <p style='text-align:justify'>
@@ -36,5 +39,14 @@
 
 <?php endforeach; ?>
 
+
+
 </ol>
+
+<div style="text-align:right">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg" alt="au format JSON" heigth="20" title="Logo JSON" width="20">
+<?= $this->Html->link('Exporter les articles présentés au format JSON', ['controller' => '', 'action' => $uri, '?' => array_merge($params, ['export' => 'json'])])?><br>
+
+</div>
+
     </article>

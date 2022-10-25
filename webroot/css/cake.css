@@ -4,16 +4,6 @@ body {
     font-weight: 400;
 }
 
-.top-nav-links,
-.side-nav,
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway", sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    color: #363637;
-}
 
 a {
     color:#2f85ae;
@@ -218,4 +208,17 @@ th {
     .desc:after {
         content: " \2190";
     }
+}
+#tabs h3
+{
+    display:inline-block;
+    cursor: pointer;
+    background-color: #ffff;
+    font : bold 17px "Alegreya SC";
+    font-family: "adelle",serif;
+    
+}
+
+#tabs h3:hover {
+    border-bottom: 1px solid black;
 }

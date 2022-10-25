@@ -10,9 +10,9 @@ sup, sub {
     text-align: right;
     width: 95%;
 }
-button {
+/*button {
     font: normal 17px "Alegreya" !important;
-}
+}*/
 
 
 
@@ -1643,6 +1643,14 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+.rechercheh3:hover {
+
+border-bottom: 1px solid;
+cursor: pointer;
+float:left;
+
+}
+
 .grey9 {
   color: #999999 !important;
 }
@@ -1660,10 +1668,6 @@ html {
     /*-webkit-transform: translate3d(0,0,0);*/
 }
 
-body, ul {
-    margin: 0;
-    padding: 0;
-}
 
 body {
   padding: 0 !important;
@@ -1827,8 +1831,8 @@ ul.pagination a, ul.pagination span {
   text-transform: capitalize;
 }
 ul.pagination a:hover, ul.pagination a.active, ul.pagination span:hover, ul.pagination span.active {
-  text-decoration: none;
-  color: white;
+  text-decoration: none !important;
+  color: white !important;
   background-color: #0d0d0d;
   border: 1px solid #0d0d0d;
 }

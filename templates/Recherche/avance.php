@@ -12,6 +12,7 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 // $auteurs = afficherTousLesAuteursFormOptionSansId();
 
 ?>
+<?= $this->Html->script('tab.js') ?>
 
 <article class="landing-intro">
 
@@ -19,39 +20,48 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 			Les formulaires de recherche permettent d’exploiter une base de données constituée des références issues des bibliographies primaires des critiques répertoriés dans le site. 
 			La base est interopérable avec les technologies du Web de données et donc interrogeable via Isidore, Hal et les outils comme Zotero ou Mendeley.
 		</p>
+	<div id="tabs" style="display:flex">
+        <h3 style='margin-left:90px;' onClick="selView(1, this)">Recherche simple</h3>
+		<h3>&nbsp;/&nbsp;</h3>
+        <h3 onClick="selView(2, this)">Recherche avancee</h3>
+	</div>
+<div class="tabcontent">
+<div id="indextab" class="tabpanel" style="display:inline">
             <?= $this->Form->create(null, ['type' => 'get', 'url' => '/recherche/resultats']) ?>
-			<h3 style="color: #1f398f; float: left; margin-left: 90px;">Recherche simple</h3><h3>&nbsp;/&nbsp;<a href="javascript:recherche_avancee();">Recherche avancée</a></h3>
-			<br/>
 			<fieldset class="rechercher_fieldset">
 				<p>
 					<label class="control-label col-sm-8">Chercher un mot ou un groupe de mots</label>
 					<input type="hidden" name="type" value="simp">
 					<input style="width: 350px;" list="text" name="text" size="55" maxlength="255" autocomplete='off' required >
 					<datalist id="text">
-					<?php affichierToutesLesCritiquesFormOptionSansDoublon(); 
-					afficherToutesLesRevuesFormOptionSansDateNiDoublon();
-					?>
+						<?php 
+						  	//affichierToutesLesCritiquesFormOptionSansDoublon();
+							afficherToutesLesRevuesFormOptionSansDateNiDoublon();
+							//afficherTousLesOuvragesFormOptionSansAnneeNiDoublon();
+							afficherTousLesAuteursFormOptionSansId();
+						?>
+					
 					</datalist>
 				</p>
 			</fieldset>
 			<div class="rechercher_div_bouton">
 			<?= $this->Form->button(__('Lancer la recherche')) ?>
+			<?= $this->Form->button('Réinitialiser la recherche', ['type'=>'reset']); ?>
 			</div>
-            <?= $this->Form->end() ?>       	
-		<form id="avancee" style="visibility: hidden;" action="avance.php" method="get">
- 			<h3><a href="javascript:recherche_simple();">Recherche simple</a>&nbsp;/&nbsp;</h3><h3 style="color: #1f398f;">Recherche avancée</h3>
+            <?= $this->Form->end() ?>
+</div>
+<div id="avancetab" class="tabpanel" style="display:none">
+
+		<?= $this->Form->create(null, ['type' => 'get', 'url' => '/recherche/resultats']) ?>
+		<input type="hidden" name="type" value="det">
+ 			
 			<!-- Si vous n'avez qu'un auteur à selectionner; cliquez <a href="javascript:mono()">ici</a>) -->
 			<fieldset class="rechercher_fieldset">
 				<legend class="rechercher_legend">Rechercher dans le titre ou le complément de titre</legend>
-				<p><label class="control-label col-sm-8">Chercher un mot ou un groupe de mots</label>
-				<input name="Titre_SousTitre" type="text" size="35" maxlength="100" style="width: 350px;" /></p>
-				<p><label class="control-label col-sm-8">dans</label>
-	            <input type="radio" name="choix" value="choix_titre" />
-	            le titre
-	            <input type="radio" name="choix" value="choix_sous_titre"/>
-	            le complément de titre
-	            <input type="radio" name="choix" value="choix_sous_titre_et_titre" checked />
-	            les deux<br /></p>
+				<p><label class="control-label col-sm-8">Dans le titre: </label>
+				<input name="critique_titre" type="text" size="35" maxlength="100" style="width: 350px;" /></p>
+				<p><label class="control-label col-sm-8">Dans le complément titre: </label>
+				<input name="cpl_critique" type="text" size="35" maxlength="100" style="width: 350px;" /></p>
 			</fieldset>
 
 			<fieldset class="rechercher_fieldset">
@@ -65,7 +75,7 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 				</select>
 				<p>
 		        <label class="control-label col-sm-8">Attribution<br /></label>
-		        <select name="type" class="rechercher_comboBox">
+		        <select name="type_critique" class="rechercher_comboBox">
 		            <option label=""></option>
 		            <option value="certifie">Auteur certifié</option>
 		            <option value="attribue">Attribué àl'auteur</option>
@@ -73,7 +83,7 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 		        </p>
 		        <p>
 				<label class="control-label col-sm-8">Type de signature <br /></label>
-	        	<select name="typeSignature" class="rechercher_comboBox">
+	        	<select name="type_signature" class="rechercher_comboBox">
 	               <option label=""></option>
 				   <option value="patronyme">Patronyme(s)</option>
 	               <option value="initiales">Initiales</option>
@@ -87,14 +97,14 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 				</p>  
 		        <p>
 	        	<label class="control-label col-sm-8">Rechercher par année(s) de publication entre</label>
-	        	<input name="anneeEditionMin" type="text" size="4" maxlength="4" />&nbsp;&nbsp;&nbsp;et&nbsp;&nbsp;&nbsp;<input name="anneeEditionMax" type="text" size="4" maxlength="4" />
+	        	<input name="dateMin" type="text" size="4" maxlength="4" />&nbsp;&nbsp;&nbsp;et&nbsp;&nbsp;&nbsp;<input name="dateMax" type="text" size="4" maxlength="4" />
 	     		</p>
 	     </fieldset>
 	  	 <fieldset class="rechercher_fieldset">
 	       <legend class="rechercher_legend">Recherche d'ouvrage ou de revue</legend>
 	        <p>
 	        <label class="control-label col-sm-8">Type de texte<br /></label>
-	        <select name="typeCritique" onChange="avance();" class="rechercher_comboBox"> 
+	        <select name="type_texte" onChange="avance();" class="rechercher_comboBox"> 
 	        <option label=""></option>
 	            <optgroup label="Périodique">
 	            	<option value="article">Article de périodique</option>
@@ -131,8 +141,15 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 				</datalist>
 	        </div>
 	  </fieldset>
+	  <div class="rechercher_div_bouton">
+			<?= $this->Form->button(__('Lancer la recherche')) ?>
+			<?= $this->Form->button('Réinitialiser la recherche', ['type'=>'reset']); ?>
+			</div>
+			<?= $this->Form->end() ?>
+</div>
+</div>
 	  
-<script>
+<!--<script>
 function raz() {
 	//alert('tester');
 	document.getElementById('raz').value="true";
@@ -188,64 +205,5 @@ function avance(){
 	}
 }
 
-</script>
-
-	<div class="rechercher_div_bouton">
-       <input type="submit" value="Lancer la recherche" />
-       <input type="reset" name="raz" id="raz" value="Réinilialiser la requête" style="margin-top: 10px;" />
-	</div>
-  	</form>
-  	
-	<br />
-	
-<?php
-	if($_GET['raz']=='true'){
-		unset($_GET);
-	}
-
-	if(isset($_GET['quicksearch']) && sizeof($_GET)>0 && $_GET['raz']!='true')
-	{
-		print('<h2>Résultats</h2><div id="resultat"><pre>');
-		$idAuteur=rechercherIdAuteurByPrenom_NOM($_GET['quicksearch']);
-		if($idAuteur!=''){
-			//print_r($_GET);
-			//rechercherIdAuteurByPrenom_NOM($_GET['Titre']));
-			print("Votre recherche semble porter sur un critique d'art : ");
-			//echo $idAuteur;
-			afficherAuteurById($idAuteur);
-		}
-
-
-		$idRevue=revue_id_sans_date($_GET['quicksearch']);
-		if($idRevue!=''){
-			//print_r($_GET);
-			//rechercherIdAuteurByPrenom_NOM($_GET['Titre']));
-			print("Votre recherche semble porter sur une revue : ");
-			print("<a href='avance.php?Titre_SousTitre=&choix=choix_sous_titre_et_titre&auteur=&type=&typeSignature=&pseudonyme=&anneeEditionMin=&anneeEditionMax=&typeCritique=article&revue=");
-			print(get_revue_by_id_sans_date($idRevue));
-			print("'>");
-			afficher_revue_by($idRevue);
-			print("</a>");
-			//echo $idAuteur;
-			//afficherAuteurById($idAuteur);
-		} elseif($idRevue='' && $idAuteur='') {
-			echo "Pas de résultat, veuillez tenter une recherche avancée ou réinitialiser la requête";
-			//print_r($_GET);
-		}
-
-		print('</pre></div>');
-	}
-?>
-	
-<!-- <form>
-	<button id="raz" name="raz" value="true">Réinilialiser la requête</button>
-</form> -->
-        
-<?php
-	if($_GET['opt']=='avance')echo "<script>recherche_avancee();</script>";
-	///
-?>
-
+</script>-->
 </article>
-
-

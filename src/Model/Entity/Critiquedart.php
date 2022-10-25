@@ -11,8 +11,11 @@ use Cake\ORM\Entity;
  * @property int $pk_id_critiqueDart
  * @property string $nom
  * @property string|null $prenom
+ * @property string|null $veritableIdentite
  * @property int|null $anneeNaissance
  * @property int|null $anneeMort
+ * @property string|null $lieuNaissance
+ * @property string|null $lieuMort
  * @property string|null $ISNI
  * @property string $initiales
  * @property string|null $URL_WP
@@ -31,8 +34,11 @@ class Critiquedart extends Entity
     protected $_accessible = [
         'nom' => true,
         'prenom' => true,
+        'veritableIdentite' => true,
         'anneeNaissance' => true,
         'anneeMort' => true,
+        'lieuNaissance' => true,
+        'lieuMort' => true,
         'ISNI' => true,
         'initiales' => true,
         'URL_WP' => true,

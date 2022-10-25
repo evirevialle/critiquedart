@@ -18,10 +18,25 @@ class CritiquedartController extends AppController
      */
     public function index()
     {
+       
         $critiquedart = $this->paginate($this->Critiquedart->find('all', array('order'=>array('Critiquedart.nom ASC'))));
+        $critique = $this->Critiquedart->find();
 
-        $this->set(compact('critiquedart'));
+        switch ($this->request->getQuery('type')) {
+            case 'simp':
+                $this->simpleSearch($critique, $critiquedart);
+            break;
+
+            case 'det':
+                $this->detailedSearch($critique, $critiquedart);
+            break;
+        }
+
+        $this->set(compact('critiquedart','critique'));
     }
+
+    
+
 
     /**
      * View method
@@ -36,7 +51,7 @@ class CritiquedartController extends AppController
         $this->loadModel('Periodique');
 
         $critiquedart = $this->Critiquedart->get($id, [
-            'contain' => ['Pseudonyme']]);
+            'contain' => ['Pseudonyme','Secondaire', 'Site']]);
        
         $periodique = $this->Periodique->find();
 
@@ -52,44 +67,65 @@ class CritiquedartController extends AppController
 
     public function avance()
     {
-        
-        $critiquedart = $this->Critiquedart->find()
-        ->contain(['Signature']);
+        $format = $this->request->getQuery('export');
+        if(!empty($format)){
+            $format = strtolower($format);
+        }
+        $formats = [
+            'xml' => 'Xml',
+            'json' => 'Json',
+        ];
+
+        // Paginate if download is not requested
+        // Note: This checking for download is important, since the download will
+        // only return the results of the first page if the results have been paginated!
+        if(empty($format) || !isset($formats[$format])){
+            
+            $critiquedart = $this->paginate($this->Critiquedart);
+
+        } else{
+            $critiquedart = $this->Critiquedart->find();
+        }
+        $critiquedart = $this->Critiquedart->find();
         
         switch ($this->request->getQuery('type')) {
             case 'simp':
-                $this->simpleSearch($critiquedart);
+                $this->simpleSearch($critiquedart, $critique);
             break;
 
             case 'det':
-                $this->detailedSearch($critiquedart);
+                $this->detailedSearch($critiquedart, $critique);
             break;
         }
+     
 
         $this->set(compact('critiquedart'));
     }
 
-    private function detailedSearch(&$critiquedart){
+    private function detailedSearch(&$critiquedart, &$critique){
 
         $period = $this->request->getQuery('period');
         $critiquedart_nom = $this->request->getQuery('nom');
         $critiquedart_prenom = $this->request->getQuery('prenom');
+        $lettre = $this->request->getQuery('lettre');
 
         if(!empty($period)){
 			$critiquedart->matching('Signature.Critique.Numeroperiodique.Periodique', function($q) use ($period){
 					return $q->where(['Periodique.titre LIKE' => $period]);
 				}
 			);
+        }
         
         if(!empty($critiquedart_nom)){
                 $critiquedart->where(['Critiquedart.nom' => $critiquedart_nom]);
-        };
+        }
+
         if(!empty($critiquedart_prenom)){
                 $critiquedart->where(['Critiquedart.prenom' =>$critiquedart_prenom]);
         }
 
+      
     }
-}
+    }
 
 
-}

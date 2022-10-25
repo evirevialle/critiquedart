@@ -13,41 +13,26 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  */
+require_once(__DIR__.'/../fonctions/lib_fonctions.php');
+require_once(__DIR__.'/../../config/config.php');
 ?>
-<!DOCTYPE html>
-<html class="js svg wf-adelle-n4-active wf-adelle-n7-active wf-active" lang="fr-FR">
-<head>
-    <meta name="msapplication-tilecolor" content="#ffffff">
-    <style type="text/css">.font-adelle,.tk-adelle{font-family:"adelle",serif;}</style>
-    <link rel="search" type="application/opensearchdescription+xml" title="Critiques" href="http://critiquesdart.univ-paris1.fr/opensearch.xml" />
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        Critiques d’art - Bibliographies en ligne de critiques d’art francophones
-    </title>
-    <?= $this->Html->meta('icon') ?>
+<?= afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_cles,$date,$lieu,$rattachement,$type,$url,$contributeur); ?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-    <link rel="stylesheet" id="labex-cap-style-css" href="/webroot/css/style.css" type="text/css" media="all">
+  ga('create', 'UA-90419935-1', 'auto');
+  ga('send', 'pageview');
 
-    <?= $this->Html->css(['style','cairn','colorpicker','critiques','d','home','html5forms.layout','sbi','styleFormulaire','webforms2']) ?>
-    <?= $this->Html->css(['http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css']) ?>
-    <?= $this->Html->script(['fly5lvw','critiques','modernizr','jquery_002','jquery-migrate','jquery','application']) ?>
-    <?= $this->Html->script(['http://code.jquery.com/jquery-1.8.2.js']) ?>
-    <?= $this->Html->script(['http://code.jquery.com/ui/1.9.1/jquery-ui.js']) ?>
-
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
+</script>
 <body>
     <div class="page-container font-adelle">
         <header class="site-header">
             <div class="additional-links" style="width: 65px;">
         <?php         
         session_start();
-        require_once(__DIR__.'/../../config/config.php');
-        require_once(__DIR__.'/../fonctions/lib_fonctions.php');
         if(isset($_SESSION['user'])){
             echo "<a href='/pages/unconnect' class=\"icon-deconnect\" title=\"Se déconnecter\"></a></div>";
         } else {
@@ -55,7 +40,7 @@
         }
         milieu_header();?>
                 <div class="site-header__top" ><br>
-                <a href="http://critiquesdart.univ-paris1.fr/" class="logo-critiques">
+                <a href="http://critiques_dart.local/" class="logo-critiques">
                     <img src="/webroot/logos/Logo_critiques.png" width="650" height="80" alt="critiques d’art" title="Logo Critiques">
                 </a>
         
@@ -66,16 +51,19 @@
                     26.121
                 </div>
         
-                <div class="header_colored_section"></div>
-        
-                <!--<form role="search" method="get" id="searchform" class="searchform" action="rechercher.php" style="top: 133px;">
+                <div class="header_colored_section">
+                <a href="https://www.facebook.com/critiquesdart/" title="Suivez l'actualité du projet sur sa page Facebook"><img src="/webroot/images/facebook.png"></a>
+                </div>
+
+                <?= $this->Form->create(null, ['type'=>'get', 'url'=>'/recherche/resultats', 'id'=>'searchform', 'class'=>'searchform','style'=>'top:133px']); ?>
+                <!--<form role="search" method="get" id="searchform" class="searchform" action="rechercher.php" style="top: 133px;">-->
                     <div>
-                        <input name="quicksearch" id="autocomplete" type="text" style="border-radius: 10px;">
+                        <input type="hidden" name="type" value="simp">
+                        <input name="text" id="autocomplete" type="text" style="border-radius: 10px;">
                         <label class="screen-reader-text" for="autocomplete">Recherche pour&nbsp;:</label>
                         <input id="searchsubmit" value="Rechercher" type="submit">
                     </div>
-                </form>-->
-
+                <?= $this->Form->end(); ?>
                 <!-- <form action="index.php">
                     <input id="autocomplete" name="searchFor" type="text" rows="5"/>
                     <button type="submit">search</button>
@@ -114,11 +102,11 @@
                     </div>
                 </nav>
             </div>
-        </header>
-        
+            <br>
+                </header>
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
-
+    
     <footer class="site-footer font-adelle">
         
         <div class="site-footer-logos">

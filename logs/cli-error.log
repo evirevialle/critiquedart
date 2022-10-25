@@ -251,3 +251,38 @@ Stack Trace:
 
 
 
+2022-10-11 16:21:17 error: [Cake\Database\Exception\DatabaseException] SQLSTATE[HY000]: General error: 1356 View 'critiquesdart.VIEW_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 160
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+Caused by: [PDOException] SQLSTATE[HY000]: General error: 1356 View 'critiquesdart.VIEW_distribution_articles' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them in /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php on line 39
+Stack Trace:
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php:39
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:306
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Core/Retry/CommandRetry.php:70
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Connection.php:309
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:158
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Database/Schema/Collection.php:118
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/ORM/Table.php:513
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:424
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:244
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:156
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:112
+- /var/www/critiques_dart/vendor/cakephp/bake/src/Command/ModelCommand.php:94
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/BaseCommand.php:179
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:334
+- /var/www/critiques_dart/vendor/cakephp/cakephp/src/Console/CommandRunner.php:172
+- /var/www/critiques_dart/bin/cake.php:12
+
+
+

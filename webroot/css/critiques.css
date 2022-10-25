@@ -26,12 +26,3 @@ q:before {
 q:after {
     content: close-quote;
 }
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-top: 1em !important;
-    margin-bottom: 1 em !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 40px !important;
-}

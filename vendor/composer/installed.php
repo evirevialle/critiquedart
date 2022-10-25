@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '4.3.1',
-        'version' => '4.3.1.0',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,8 +20,8 @@
             'dev_requirement' => true,
         ),
         'cakephp/app' => array(
-            'pretty_version' => '4.3.1',
-            'version' => '4.3.1.0',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -270,6 +270,15 @@
             'aliases' => array(),
             'reference' => '10dcfce151b967d20fde1b34ae6640712c3891bc',
             'dev_requirement' => true,
+        ),
+        'friendsofcake/cakephp-csvview' => array(
+            'pretty_version' => '4.0.0',
+            'version' => '4.0.0.0',
+            'type' => 'cakephp-plugin',
+            'install_path' => __DIR__ . '/../friendsofcake/cakephp-csvview',
+            'aliases' => array(),
+            'reference' => 'a46b677860ff467e2e435de8bf17af8af1bffdc5',
+            'dev_requirement' => false,
         ),
         'jasny/twig-extensions' => array(
             'pretty_version' => 'v1.3.0',

@@ -52,7 +52,7 @@ class CritiqueTable extends Table
         ]);
         $this->belongsTo('Ouvrage', [
             'foreignKey' => 'fk_id_ouvrage',
-            'joinType' => 'INNER',
+            'joinType' => 'LEFT',
         ]);
         $this->hasMany('Signature', [
             'foreignKey' => 'fk_id_critique',

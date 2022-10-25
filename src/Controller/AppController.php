@@ -50,4 +50,46 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
     }
+    public function beforeRender ($event){
+                // Get the format, that is to be rendered, from the query params
+                $format = $this->request->getQuery('export');
+                if(empty($format)) return;
+        
+                $format = strtolower($format);
+        
+                $formats = [
+                    'xml' => 'Xml',
+                    'json' => 'Json'
+                ];
+        
+                // Define file name for download file according to the current Controller
+                if(isset($formats[$format])){
+                    $filename = 'Critiquesdart_';
+                    $viewVars = $this->viewBuilder()->getVars();
+        
+                    if ($this->request->getParam('action') === 'view') {
+                        switch($this->name){
+                            case 'Critiques':
+                                $filename .= 'C-'.$viewVars['critiquedart']->id;
+                            break;
+                            case 'Data':
+                                $filename .= 'D-'.$viewVars['data']->id;
+                        }
+                    } else {
+                        $filename .= 'overview';
+                    }
+        
+                    $filename .= '.'.$format;
+        
+                    // Set the options for the view
+                    $this->viewBuilder()->setClassName($formats[$format]);
+                    $this->viewBuilder()->setOption('serialize', true);
+                    $this->viewBuilder()->setOption('rootNode', 'results');
+        
+                    // Set content-disposition header to force download instead of rendering a view
+                    $this->response = $this->response
+                        ->withCharset('UTF-8')
+                        ->withHeader('Content-Disposition', 'attachment; filename="'.$filename.'"');
+                }
+    }
 }

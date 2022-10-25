@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Critiquedart Model
  *
  * @property \App\Model\Table\PseudonymeTable&\Cake\ORM\Association\HasMany $pseudonyme
+ * @property \App\Model\Table\SecondaireTable&\Cake\ORM\Association\HasMany $secondaire
  * @property \App\Model\Table\SignatureTable&\Cake\ORM\Association\BelongsToMany $signature
  * @property \App\Model\Table\CollectifTable&\Cake\ORM\Association\BelongsToMany $collectif
  * 
@@ -51,6 +52,12 @@ class CritiquedartTable extends Table
         $this->hasMany('Pseudonyme', [
             'foreignKey' => 'fk_id_critiqueDart_signataire',
         ]);
+        $this->hasMany('Secondaire', [
+            'foreignKey' => 'fk_id_critiqueDart'
+        ]);
+        $this->hasMany('Site', [
+            'foreignKey' => 'fk_id_critiqueDart'
+        ]);
         $this->belongsToMany('Signature', [
             'foreignKey' => 'fk_id_critiquedart',
             'targetForeignKey' => 'fk_id_signature',
@@ -88,10 +95,25 @@ class CritiquedartTable extends Table
             ->allowEmptyString('prenom');
 
         $validator
+            ->scalar('veritableIdentite')
+            ->maxLenght('veritableIdentite', 120)
+            ->allowEmptyString('veritableIdentite');
+
+        $validator
             ->allowEmptyString('anneeNaissance');
 
         $validator
             ->allowEmptyString('anneeMort');
+
+        $validator
+            ->scalar('lieuNaissance')
+            ->maxLenght('lieuNaissance', 120)
+            ->allowEmptyString('lieuNaissance');
+        
+        $validator
+            ->scalar('lieuMort')
+            ->maxLenght('lieuMort', 120)
+            ->allowEmptyString('lieuMort');
 
         $validator
             ->scalar('ISNI')

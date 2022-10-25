@@ -136,13 +136,13 @@ class JsonView extends SerializedView
 
         $jsonOptions = $this->getConfig('jsonOptions');
         if ($jsonOptions === null) {
-            $jsonOptions = JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_PARTIAL_OUTPUT_ON_ERROR;
+            $jsonOptions = JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT;
         } elseif ($jsonOptions === false) {
             $jsonOptions = 0;
         }
 
         if (Configure::read('debug')) {
-            $jsonOptions |= JSON_PRETTY_PRINT;
+            $jsonOptions |= JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE;
         }
 
         if (defined('JSON_THROW_ON_ERROR')) {

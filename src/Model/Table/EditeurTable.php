@@ -46,6 +46,7 @@ class EditeurTable extends Table
         $this->hasMany('Ouvrage', [
             'foreignKey' => 'fk_id_editeur',
         ]);
+        
     }
 
     /**

@@ -58,7 +58,7 @@ function milieu_header(){
 	if(isset($_SESSION['user'])){
 		echo "<div class=\"connection-status connection-status-connecte\">
 				Bonjour ".$_SESSION['label']."&nbsp
-				<a href=\"insertion.php\" style=\"color: white;\">Saisie</a>
+				<a href='/pages/insertion/' style=\"color: white;\">Saisie</a>
 			</div>";
 	} else {
 		echo "<div class=\"connection-status\">Non connecté</div>";
@@ -76,7 +76,7 @@ function listerAuteurs(){
 		while ($donnees = $req_nb_auteur->fetch()){
 			$ligne='';
 			if($donnees["compteur"] > 0){
-				$ligne.='<li><a href="index.php?lettre=';
+				$ligne.='<li><a href="index?lettre=';
 				$ligne.=$lettre;
 				$ligne.='">'.$lettre.'</a></li>';
 			}
@@ -121,7 +121,7 @@ function afficherTousLesAuteurs(){
 	
 	while ($r = $req_auteurs->fetch())
     {
-		print('<p><a href="'.$r["URL_WP"].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
+		print('<p><a href="critique/'.$r["pk_id_critiqueDart"].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
     }
     
 	print('</div>');
@@ -314,9 +314,10 @@ function afficherAuteursParLettre($lettre){
 	$sql = "SELECT pk_id_critiqueDart, nom, prenom, anneeNaissance, anneeMort, URL_WP FROM critiquedart WHERE nom LIKE '".$lettre."%' order by nom";
 	
 	$req_auteurs=$pdo->query($sql) or die('erreur SQL dans la fonction afficherAuteursParLettre()');    
-    while ($r = $req_auteurs->fetch())
+    while($r = $req_auteurs->fetch())
     {
-    	print('<p><a href="'.$r["URL_WP"].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
+    	
+		print('<p><a href="'.$r["URL_WP"].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
     }
     
 	return($r);
@@ -1088,11 +1089,10 @@ function afficher_pseudos_by_id_critiqueDart($idCritiqueDart){
 	if($taille>0){
 		$liste_pseudos=$pdo->query($sql) or die('erreur SQL dans la fonction afficher_pseudos_by_id_critiqueDart()');
 		//print($taille);
-		echo "Pseudonyme(s) recensé(s) pour ce critique : <ol>";
 		foreach($liste_pseudos as $r){
 			echo "<li>".$r['pseudonyme']."</li>";
 		}
-		echo "</ol>";
+		
 	}
 	else echo "<p>Pas de pseudonyme recensé pour ce critique.</p>";
 }
@@ -1125,7 +1125,7 @@ function afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_c
 	<meta name="DC.source" content="http://critiquesdart.univ-paris1.fr">
 	<title>Critiques d’art - Bibliographies en ligne de critiques d’art francophones</title>
 	<link rel="stylesheet" id="labex-cap-style-css" href="/webroot/css/style.css" type="text/css" media="all">
-	<script async src="template_fichiers/fly5lvw.js"></script>
+	<script async src="/webroot/js/fly5lvw.js"></script>
 	<script type="text/javascript" src="/webroot/js/critiques.js"></script>
 	<script type="text/javascript" src="/webroot/js/modernizr.js"></script>
 	<script type="text/javascript" src="/webroot/js/jquery_002.js"></script>
@@ -1136,7 +1136,7 @@ function afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_c
 	<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
 	<link rel="canonical" href="'.$url_site.'">
-	<link rel="apple-touch-icon" sizes="57x57" href="'.$chemin_relatif_icones.'apple-touch-icon-57x57.png">
+	<!--<link rel="apple-touch-icon" sizes="57x57" href="'.$chemin_relatif_icones.'apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="'.$chemin_relatif_icones.'apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="'.$chemin_relatif_icones.'apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="'.$chemin_relatif_icones.'apple-touch-icon-144x144.png">
@@ -1149,10 +1149,10 @@ function afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_c
 	<link rel="icon" type="image/png" href="'.$chemin_relatif_icones.'favicon-160x160.png" sizes="160x160">
 	<link rel="icon" type="image/png" href="'.$chemin_relatif_icones.'favicon-96x96.png" sizes="96x96">
 	<link rel="icon" type="image/png" href="'.$chemin_relatif_icones.'favicon-16x16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="'.$chemin_relatif_icones.'favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="'.$chemin_relatif_icones.'favicon-32x32.png" sizes="32x32">-->
 	<meta name="msapplication-tilecolor" content="#ffffff">
 	<meta name="msapplication-tileimage" content="'.$chemin_relatif_images.'mstile-144x144.png">
-	<link rel="icon" href="'.$chemin_relatif_icones.'favicon.ico" type="image/x-icon">
+	<!--<link rel="icon" href="'.$chemin_relatif_icones.'favicon.ico" type="image/x-icon">-->
 	<style type="text/css">.font-adelle,.tk-adelle{font-family:"adelle",serif;}</style>
 	<link href="/webroot/css/d.css" rel="stylesheet">
 	<link href="/webroot/css/sbi.css" rel="stylesheet" type="text/css" id="sbi-style">
