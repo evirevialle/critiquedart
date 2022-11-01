@@ -34,7 +34,7 @@ function afficher_type_critique(){
 			document.getElementById('chapitre_ouvrage').style.display="none";
 			document.getElementById('monographie').innerHTML ='';
 			document.getElementById('chapitre_ouvrage').innerHTML ='';
-			contenu=eswd_charger_fichier('revue.php', false);
+			contenu=eswd_charger_fichier('revue', false);
 			document.getElementById('revue').innerHTML = contenu;
 		break;
 		case 2:
@@ -47,7 +47,7 @@ function afficher_type_critique(){
 			document.getElementById('revue').style.display="none";
 			document.getElementById('revue').innerHTML ='';
 			document.getElementById('monographie').innerHTML ='';
-			contenu=eswd_charger_fichier('chapitre.php', false);
+			contenu=eswd_charger_fichier('chapitre', false);
 			document.getElementById('chapitre_ouvrage').innerHTML = contenu;
 		break;
 		case 3: 
@@ -59,7 +59,7 @@ function afficher_type_critique(){
 			document.getElementById('revue').style.display="none";
 			document.getElementById('revue').innerHTML ='';
 			document.getElementById('monographie').innerHTML ='';
-			contenu=eswd_charger_fichier('chapitre.php', false);
+			contenu=eswd_charger_fichier('chapitre', false);
 			document.getElementById('chapitre_ouvrage').innerHTML = contenu;
 		break;
 		case 4: 
@@ -71,7 +71,7 @@ function afficher_type_critique(){
 			document.getElementById('revue').style.display="none";
 			document.getElementById('revue').innerHTML ='';
 			document.getElementById('monographie').innerHTML ='';
-			contenu=eswd_charger_fichier('chapitre.php', false);
+			contenu=eswd_charger_fichier('chapitre', false);
 			document.getElementById('chapitre_ouvrage').innerHTML = contenu;
 		break;
 		case 5: 
@@ -83,7 +83,7 @@ function afficher_type_critique(){
 			document.getElementById('revue').style.display="none";
 			document.getElementById('revue').innerHTML ='';
 			document.getElementById('monographie').innerHTML ='';
-			contenu=eswd_charger_fichier('chapitre.php', false);
+			contenu=eswd_charger_fichier('chapitre', false);
 			document.getElementById('chapitre_ouvrage').innerHTML = contenu;
 		break;
 		case 6:
@@ -95,7 +95,7 @@ function afficher_type_critique(){
 			document.getElementById('revue').style.display="none";
 			document.getElementById('revue').innerHTML ='';
 			document.getElementById('chapitre_ouvrage').innerHTML ='';
-			contenu=eswd_charger_fichier('monographie.php', false);
+			contenu=eswd_charger_fichier('monographie', false);
 			document.getElementById('monographie').innerHTML = contenu;
 		break;
 		default:
@@ -107,7 +107,7 @@ function afficher_type_critique(){
 			document.getElementById('chapitre_ouvrage').style.display="none";
 			document.getElementById('monographie').innerHTML ='';
 			document.getElementById('chapitre_ouvrage').innerHTML ='';
-			contenu=eswd_charger_fichier('revue.php', false);
+			contenu=eswd_charger_fichier('revue', false);
 			document.getElementById('revue').innerHTML = contenu;
 		break;
 	}
@@ -137,7 +137,7 @@ function nouvelle_revue() {
 	document.getElementById("transparent").style.height="260px";
 	document.getElementById("transparent").style.visibility="visible";
 	//text+='<form id="nouvelle_revue" name="nouvelle_revue" method="post" action="nouvelleRevue.php" onSubmit="return(envoyerNouveauPeriodique(this));">';
-	text+='<form id="nouvelle_revue" name="nouvelle_revue" method="post" action="nouvelleRevue.php">';
+	text+='<form name="nouvelle_revue" method="post" action="nouvelleRevue">';
 	text+='<h3>Vous allez saisir un nouveau Périodique</h3>';
 	text+='<p><label class="control-label col-sm-8">Titre du périodique</label><input name="TitrePeriodique" type="text" size="45" maxlength="255" required /><p>';
     //text+='<p><label class="control-label col-sm-8">Complément de titre de périodique</label>';
@@ -159,7 +159,7 @@ function nouvel_ouvrage() {
 	var text = '';
 	document.getElementById("transparent").style.height="480px";
 	document.getElementById("transparent").style.visibility="visible";
-	text+='<form id="nouvelOuvrage" name="nouvelOuvrage" method="post" action="nouvelOuvrage.php">';
+	text+='<form id="nouvelOuvrage" name="nouvelOuvrage" method="post" action="nouvelOuvrage">';
 	text+='<h3>Vous allez saisir un nouvel ouvrage</h3>';
 	text+='<p><label class="control-label col-sm-8">Titre de l\'ouvrage</label><input name="TitreOuvrage" type="text" size="50" maxlength="255" required /></p>';
     text+='<p><label class="control-label col-sm-8">Complément de titre de l\'ouvrage</label><input name="SousTitreOuvrage" type="text" size="50" maxlength="255" /></p>';

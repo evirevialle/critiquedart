@@ -45,6 +45,7 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+        
         if (!$path) {
             return $this->redirect('/');
         }
@@ -59,9 +60,11 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
+       
         $this->set(compact('page', 'subpage'));
 
         try {
+            $this->Layout = 'home';
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {

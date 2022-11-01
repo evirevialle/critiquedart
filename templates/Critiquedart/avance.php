@@ -5,6 +5,7 @@
  * 
  */
 
+require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 $params = $this->request->getQueryParams();
 $uri = $this->request->getRequestTarget();
 ?>
@@ -22,11 +23,11 @@ $uri = $this->request->getRequestTarget();
         <li>Le nom de la revue est (ou contient la chaîne) "<mark><?= $_GET['period'] ?></mark>"</li>
 </ol>
 
-<h3 id="article">Articles (<?= $critiquedart->find('all')->count();?>) <a href="#navigation" title="remonter">^</a></h3>
+<h3 id="article">Articles (<?= $critiquedart->find('all')->count();?>) <a href="#navigation" title="remonter">&uarr;</a></h3>
 
 <ol>
 <?php foreach($critiquedart as $critique): ?>
-
+    <?php require(__DIR__.'/../fonctions/zotero_critiques.php'); ?>
     <li><?php
         echo $critique->nom.', '.$critique->prenom.' , "'.$critique->_matchingData['Critique']['titre'].'" , <em>'.$critique->_matchingData['Periodique']['titre'].'</em>';
         if(!empty($critique->_matchingData['Numeroperiodique']['numero'])){
@@ -35,9 +36,11 @@ $uri = $this->request->getRequestTarget();
         if(!empty($critique->_matchingData['Numeroperiodique']['dateprecise'])){
           echo   ', '.$critique->_matchingData['Numeroperiodique']['dateprecise']->i18nFormat('dd-MMMM-yyyy','Europe/Paris','fr_FR');
         };
-        echo ', p.'.$critique->_matchingData['Critique']['pagination']?></li>
-
+        echo ', p.'.$critique->_matchingData['Critique']['pagination']?>
+</li>
+<?php print(zotero_article($titre,$periodiqueTitre,$numeroPeriodique,$prenom,$nom,$auteur,$dateprecise,$pagination,$issn)); ?>
 <?php endforeach; ?>
+
 
 
 
@@ -46,6 +49,8 @@ $uri = $this->request->getRequestTarget();
 <div style="text-align:right">
 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg" alt="au format JSON" heigth="20" title="Logo JSON" width="20">
 <?= $this->Html->link('Exporter les articles présentés au format JSON', ['controller' => '', 'action' => $uri, '?' => array_merge($params, ['export' => 'json'])])?><br>
+<p><strong>Nombres de références : <?= $critiquedart->find('all')->count() ?></strong></p>
+<p><b><a href='/recherche/avance' style='color: #1f398f !important'>Recommencer la recherche.</a><a href='#navigation' title='remonter'>&uarr;</a></b></p>
 
 </div>
 

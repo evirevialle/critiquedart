@@ -17,7 +17,7 @@ require_once(__DIR__.'/../../config/config.php');
 	}
     else 
     {
-        echo '<hr class="listing-redline"><div class="divAuteurs">';
+        echo '<h3>Tous les Auteurs</h3><hr class="listing-redline"><div class="divAuteurs">';
         foreach($critiquedart as $critique){
             echo '<p><a href="critique/'.$critique->pk_id_critiqueDart.'">'.$critique->prenom.' '.$critique->nom;
             if(!empty($critique->anneeNaissance)){

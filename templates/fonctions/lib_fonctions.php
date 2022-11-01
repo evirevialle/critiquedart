@@ -58,7 +58,7 @@ function milieu_header(){
 	if(isset($_SESSION['user'])){
 		echo "<div class=\"connection-status connection-status-connecte\">
 				Bonjour ".$_SESSION['label']."&nbsp
-				<a href='/pages/insertion/' style=\"color: white;\">Saisie</a>
+				<a href='/ajout/insertion/' style=\"color: white;\">Saisie</a>
 			</div>";
 	} else {
 		echo "<div class=\"connection-status\">Non connecté</div>";
@@ -195,7 +195,7 @@ function afficherAuteurById($id){
 	$req_auteur=$pdo->query($sql) or die('erreur SQL dans la fonction afficherAuteurById()');
 	while ($r = $req_auteur->fetch())
     { 
-		print('<p><a href="biblio_auteur.php?critique='.$r['pk_id_critiqueDart'].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
+		print('<p><a href="/critiquedart/critique/'.$r['pk_id_critiqueDart'].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
     }
 }
 function afficherAuteurNomPrenomById($id){
@@ -249,7 +249,7 @@ function rechercherIdAuteurByPrenom_NOM($prenom_NOM){
     }
 	return($id);
 }
-function afficherAuteurByIdModeBiblio($id,$date){
+function afficherAuteurByIdModeBiblio($id){
 	// Affiche un auteur depuis son identifiant
 	global $pdo;
 	$auteur='';
@@ -324,7 +324,7 @@ function afficherAuteursParLettre($lettre){
 }
 function inserer_nouvelle_revue($titre,$ISSN,$periodicite,$couverture){
 	global $pdo;
-	$sql='INSERT INTO periodique (ISSN,titre,periodicite,couverture) VALUES ('.$ISSN.','.addslashes($titre).','.$periodicite.','.$couverture.')';
+	$sql='INSERT INTO periodique (ISSN,titre,periodicite,couverture) VALUES ('.$ISSN.','.$titre.','.$periodicite.','.$couverture.')';
 	//echo $sql;
 	$req_nouvelle_revue=$pdo->query($sql) or die('erreur SQL dans la fonction inserer_nouvelle_revue()');
 	//$id=$pdo->lastInsertId();
@@ -480,7 +480,7 @@ function ouvrage_id($nomOuvrage){
 function numero_periodique_id($id_revue,$numero,$annee,$nb_page,$titre_numero,$complementTitre,$volume,$dateprecise){
 	global $pdo;
 	//$sql='SELECT pk_id_numero_periodique FROM `numeroperiodique` WHERE numero=NULL AND annee=1929 AND `nb_pages` = NULL AND titre=NULL AND volume LIKE 'X' AND dateprecise=NULL AND fk_id_periodique=66';
-	$sql='SELECT pk_id_numero_periodique FROM numeroperiodique WHERE fk_id_periodique='.$id_revue;
+	$sql='SELECT pk_id_numero_periodique FROM `numeroperiodique` WHERE fk_id_periodique='.$id_revue;
 	if($numero!='')$sql.=' AND numero='.$numero;
 	if($annee!='')$sql.=' AND annee='.$annee;
 	if($volume!='')$sql.=' AND volume LIKE \''.addslashes($volume).'\'';
@@ -1131,9 +1131,9 @@ function afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_c
 	<script type="text/javascript" src="/webroot/js/jquery_002.js"></script>
 	<script type="text/javascript" src="/webroot/js/jquery-migrate.js"></script>
 	<script type="text/javascript" src="/webroot/js/jquery.js"></script>
-	<script type="text/javascript" src="/webroot/js/application.js"></script>
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="/webroot/js/application.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
 	<link rel="canonical" href="'.$url_site.'">
 	<!--<link rel="apple-touch-icon" sizes="57x57" href="'.$chemin_relatif_icones.'apple-touch-icon-57x57.png">
@@ -1161,4 +1161,90 @@ function afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_c
 	<link rel="search" type="application/opensearchdescription+xml" title="Critiques" href="http://critiquesdart.univ-paris1.fr/opensearch.xml" />
 </head>';
 echo $entete;
+}
+
+function zotero_article($titre,$periodiqueTitre,$numeroPeriodique,$prenom,$nom,$auteur,$dateprecise,$pagination,$issn){
+
+	$code_span='<span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=';
+	$code_span.= urlencode($titre);
+	$code_span.= '&amp;rft.jtitle=';
+	$code_span.=urlencode($periodiqueTitre);
+	$code_span.='&amp;rft.issue=';
+	$code_span.=urlencode($numeroPeriodique);
+	$code_span.='&amp;rft.aufirst=';
+	$code_span.=urlencode($prenom);
+	$code_span.='&amp;rft.aulast=';
+	$code_span.=urlencode($nom);
+	$code_span.='&amp;rft.au=';
+	$code_span.=$auteur;
+	$code_span.='&amp;rft.date=';
+	$code_span.=$dateprecise;
+	$code_span.='&amp;rft.pages=';
+	$code_span.=$pagination;
+	$code_span.='&amp;rft.issn=';
+	$code_span.=$issn;
+	$code_span.='"></span>';
+
+	return $code_span;
+}
+
+function zotero_ouvrage($titre,$editeurVille,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination){
+
+	$code_span='<span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=';
+	$code_span.=urlencode($titre);
+	$code_span.='&amp;rft.place=';
+	$code_span.=urlencode($editeurVille);
+	$code_span.='&amp;rft.publisher=';
+	$code_span.=urlencode($editeurNom);
+	$code_span.='&amp;rft.aufirst=';
+	$code_span.=urlencode($prenom);
+	$code_span.='&amp;rft.aulast=';
+	$code_span.=urlencode($nom);
+	$code_span.='&amp;rft.au=';
+	$code_span.=$auteur;
+	$code_span.='&amp;rft.date=';
+	$code_span.=$annee;
+	$code_span.='&amp;rft.tpages=';
+	$code_span.=$pagination;
+	$code_span.='"></span>';
+
+return $code_span;
+}
+
+function zotero_coordinationOuvrage($titre,$editeurVille,$editeurNom,$coordonnateur,$annee){
+	$code_span='<span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=';
+	$code_span.=urlencode($titre);
+	$code_span.='&amp;rft.place=';
+	$code_span.=urlencode($editeurVille);
+	$code_span.='&amp;rft.publisher=';
+	$code_span.=urlencode($editeurNom);
+	$code_span.='&amp;rft.au=';
+	$code_span.=urlencode($coordonnateur);
+	$code_span.='&amp;rft.date=';
+	$code_span.=$annee;
+	$code_span.='"></span>';
+
+return $code_span;
+}
+
+function zotero_chapitre($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination){
+
+	$code_span.='<span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=';$code_span.=urlencode($titre);
+	$code_span.='&amp;rft.btitle=';
+	$code_span.=urlencode($ouvrageTitre);
+	$code_span.='&amp;rft.publisher=';
+	$code_span.=urlencode($editeurNom);
+	$code_span.='&amp;rft.aufirst=';
+	$code_span.=urlencode($prenom);
+	$code_span.='&amp;rft.aulast=';
+	$code_span.=urlencode($nom);
+	$code_span.='&amp;rft.au=';
+	$code_span.=$auteur;
+	$code_span.='&amp;rft.date=';
+	$code_span.=$annee;
+	$code_span.='&amp;rft.pages=';
+	$code_span.=$pagination;
+	$code_span.='"></span>';
+
+	return $code_span;
 }

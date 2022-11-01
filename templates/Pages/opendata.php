@@ -19,7 +19,7 @@
     <p class="paragraphe" style="margin-top:0;align=justify">
     	</p><details>
             <summary>Liste de tous les auteurs de critiques (jeu dynamique)</summary> 
-                Accessibles au format <a href="API/csv_encode_auteurs.php">
+                Accessibles au format <a href="/API/csv_encode_auteurs">
                 <abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
                 </a>
@@ -37,7 +37,7 @@
         </details>
         <details>
             <summary>Liste de toutes les revues analysées (jeu dynamique)</summary> 
-                Accessibles au format <a href="API/csv_revues_base_critiques.php">
+                Accessibles au format <a href="/API/csv_revues_base_critiques">
                 <abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
                 </a>
@@ -53,11 +53,11 @@
         </details>
         <details>
             <summary>Liste de toutes les critiques (jeu dynamique)</summary> 
-                Accessibles aux formats <a href="API/csv_encode_tout.php">
+                Accessibles aux formats <a href="/API/csv_encode_tout">
                 <abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
                 </a>
-                ou <a href="API/json_encode_tout_api.php">
+                ou <a href="/API/json_encode_tout_api">
                 <abbr title="JavaScript Object Notation – Notation Objet issue de JavaScript">JSON</abbr>
         	<img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg" alt="au format JSON" title="Logo JSON" width="20" height="20"></a>
             <table>
@@ -81,11 +81,11 @@
         </details>
         <details>
   			<summary>Liste des critiques publiées sous forme d'articles dans des revues (jeu dynamique)</summary> 
-        		Accessibles aux formats <a href="API/csv_encode_article.php">
+        		Accessibles aux formats <a href="/API/csv_encode_article">
         		<abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
         		</a>
-        		ou <a href="API/json_encode_article_api.php">
+        		ou <a href="/API/json_encode_article_api">
         		<abbr title="JavaScript Object Notation – Notation Objet issue de JavaScript">JSON</abbr>
         	<img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg" alt="au format JSON" title="Logo JSON" width="20" height="20"></a>
             <table>
@@ -107,7 +107,7 @@
         </details>
         <details>
   			<summary>Distribution des critiques publiées sous forme d'articles dans des revues par auteur de critiques d'art (jeu dynamique)</summary> 
-        		Accessible au format <a href="API/csv_distribution_articles.php">
+        		Accessible au format <a href="/API/csv_distribution_articles">
         		<abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
         		</a>
@@ -124,7 +124,7 @@
         </details>
         <details>
   			<summary>Listes des signatures alternatives de critiques sous forme de pseudonymes</summary> 
-        		Accessible au format <a href="/data/pseudonymes.csv">
+        		Accessible au format <a href="/webroot/download/pseudonymes.csv">
         		<abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
         		</a>
@@ -139,7 +139,7 @@
         </details>
         <details>
   			<summary>Listes des éditeurs d'ouvrages recensés par la base</summary> 
-        		Accessible au format <a href="/data/editeurs_villes.csv">
+        		Accessible au format <a href="/webroot/download/editeurs_villes.csv">
         		<abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
         		</a>
@@ -153,7 +153,7 @@
         </details>
         <details>
   			<summary>Distribution géographique des éditeurs d'ouvrages recensés par la base (nombre d'éditeurs par ville)</summary> 
-        		Accessible au format <a href="/data/editeurs_villes_distribution.csv">
+        		Accessible au format <a href="/webroot/download/editeurs_villes_distribution.csv">
         		<abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, zpeut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
                         <img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
                                 </a>
@@ -167,7 +167,7 @@
         </details>
         <details>
   		<summary id="editeurs-geo-name">Répartition des éditeurs avec les coordonnées cartographiques</summary> 
-        		Accessible au format <a href="/data/editeurs-geo-name.csv">
+        		Accessible au format <a href="/webroot/download/editeurs-geo-name.csv">
         		<abbr title="Comma-separated values : format informatique ouvert représentant des données tabulaires sous forme de valeurs séparées par des virgules ou point-virgules, peut être édité par un tableur ou un éditeur de texte.">CSV</abbr>
         	<img src="/webroot/images/csv.jpg" alt="au format CSV" title="Logo CSV" width="20" height="20"> 
         		</a>

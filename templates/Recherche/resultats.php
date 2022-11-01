@@ -6,6 +6,7 @@
  */
 
 use Cake\Routing\Router;
+require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 ?>
 <article class='landing-intro'>
 <h2 id='ancre' class="std__title">Résultats de la recherche</h2>
@@ -35,6 +36,7 @@ if($monographie->find('all')->count() != 0){
     echo '<h3 id="monographies">Ouvrages et ouvrages traduits ('.$monographie->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($monographie as $mo){
+        require(__DIR__.'/../fonctions/variables_monographies.php');
         echo "<li>";
         if(!empty($mo->nom)){
             echo $mo->nom.', ';
@@ -64,13 +66,16 @@ if($monographie->find('all')->count() != 0){
             echo $mo->annee;
         }
         echo '</li>';
+        print(zotero_ouvrage($titre,$editeurVille,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
     }
+
     echo '</ol>';
 }
 if($coordinationsOuvrage->find('all')->count() != 0){
     echo '<h3 id="coordinations">Coordinations d\'ouvrages ('.$coordinationsOuvrage->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($coordinationsOuvrage as $cdo){
+        require(__DIR__.'/../fonctions/variables_CoordOuvrages.php');
         echo '<li>';
         if(!empty($cdo->coordonnateur)){
             echo $cdo->coordonnateur.', ';
@@ -91,6 +96,7 @@ if($coordinationsOuvrage->find('all')->count() != 0){
             echo $cdo->annee;
         }
         echo'</li>';
+        print(zotero_coordinationOuvrage($titre,$editeurVille,$editeurNom,$coordonnateur,$annee));
     }
     echo '</ol>';
 }
@@ -98,6 +104,7 @@ if($chapitre->find('all')->count() != 0){
     echo '<h3 id="chapitres">Collaborations à des ouvrages collectifs ('.$chapitre->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($chapitre as $ch){
+        require(__DIR__.'/../fonctions/variables_chapitres.php');
         echo '<li>';
         if(!empty($ch->nom)){
             echo $ch->nom.', ';
@@ -124,6 +131,7 @@ if($chapitre->find('all')->count() != 0){
             echo $ch->pagination;
         }
         echo '</li>';
+        print(zotero_chapitre($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
     }
     echo '</ol>';
 }

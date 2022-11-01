@@ -92,4 +92,5 @@ class AppController extends Controller
                         ->withHeader('Content-Disposition', 'attachment; filename="'.$filename.'"');
                 }
     }
+   
 }

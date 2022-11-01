@@ -15,6 +15,7 @@
  */
 require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 require_once(__DIR__.'/../../config/config.php');
+
 ?>
 <?= afficher_entete_avec_meta($titre,$auteur,$critique,$description,$mots_cles,$date,$lieu,$rattachement,$type,$url,$contributeur); ?>
 <script>
@@ -104,10 +105,12 @@ require_once(__DIR__.'/../../config/config.php');
             </div>
             <br>
                 </header>
+                <section class="main">
+    <div class="container" style="margin: 30px;">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
     
-    <footer class="site-footer font-adelle">
+    <footer class="site-footer font-adelle" style="display:inline-flex">
         
         <div class="site-footer-logos">
             <a href="http://www.univ-paris1.fr/" class="footer_logo">
@@ -141,5 +144,6 @@ require_once(__DIR__.'/../../config/config.php');
         </div>
 </footer>
 </div>
+                  </section>
 </body>
 </html>

@@ -1,4 +1,4 @@
-    <article class="std">
+<article class="std">
         <div class="std__sidebloc">
             <div style="margin-top: 50px;">
             <h3 class="std__title">Partenaires</h3>

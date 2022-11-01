@@ -21,7 +21,7 @@ $entete='
 	<link rel="alternate" hreflang="fr" href="https://critiquesdart.univ-paris1.fr/" />
     <link rel="alternate" hreflang="en" href="https://critiquesdart.univ-paris1.fr/en" />
 	<script async src="/webroot/js/fly5lvw.js"></script>
-	<script type="text/javascript" src="js/critiques.js"></script>
+	<script type="text/javascript" src="/webroot/js/critiques.js"></script>
 	<script type="text/javascript" src="/webroot/js/modernizr.js"></script>
 	<script type="text/javascript" src="/webroot/js/jquery_002.js"></script>
 	<script type="text/javascript" src="/webroot/js/jquery-migrate.js"></script>
