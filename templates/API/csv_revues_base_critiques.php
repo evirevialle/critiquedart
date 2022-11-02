@@ -1,4 +1,5 @@
 <?php
+    $this->layout = 'ajax';
     function query_to_csv($db_conn, $query, $filename, $attachment = false, $headers = true) {
        
         if($attachment) {

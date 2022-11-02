@@ -1,4 +1,5 @@
 <?php
+    $this->layout = 'ajax';
 $filename="resultats_articles_revues.json";
 header('Content-type: text/json');
 header('Content-type: application/json; charset=utf-8');

@@ -139,6 +139,7 @@ if($introduction->find('all')->count() != 0){
     echo '<h3 id="introductions">Introductions ('.$introduction->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($introduction as $in){
+        require(__DIR__.'/../fonctions/variables_introductions.php');
         echo '<li>';
         if(!empty($in->nom)){
             echo $in->nom.', ';
@@ -165,6 +166,7 @@ if($introduction->find('all')->count() != 0){
             echo $in->annee;
         }
         echo '</li>';
+        print(zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
     }
     echo '</ol>';
 }
@@ -172,6 +174,7 @@ if($preface->find('all')->count() != 0){
     echo '<h3 id="prefaces">Prefaces ('.$preface->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($preface as $pr){
+        require(__DIR__.'/../fonctions/variables_prefaces.php');
         echo '<li>';
         if(!empty($pr->nom)){
             echo $pr->nom.', ';
@@ -198,6 +201,7 @@ if($preface->find('all')->count() != 0){
             echo $pr->annee;
         }
         echo '</li>';
+        print(zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
     }
     echo '</ol>';
 }
@@ -205,6 +209,7 @@ if($postface->find('all')->count() != 0){
     echo '<h3>Postfaces ('.$postface->find('all')->count().') <a href=<a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($postface as $po){
+        require(__DIR__.'/../fonctions/variables_postfaces.php');
         echo '<li>';
         if(!empty($po->nom)){
             echo $po->nom.', ';
@@ -231,6 +236,7 @@ if($postface->find('all')->count() != 0){
             echo $po->annee;
         }
         echo '</li>';
+        print(zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
     }
     echo '</ol>';
 }
@@ -238,6 +244,7 @@ if($articles->find('all')->count() != 0){
     echo '<h3 id="articles">Articles ('.$articles->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($articles as $a){
+        require(__DIR__.'/../fonctions/variables_articles.php');
         echo '<li>';
         if(!empty($a->nom)){
             echo $a->nom.', ';
@@ -264,6 +271,7 @@ if($articles->find('all')->count() != 0){
             echo 'p.'.$a->pagination;
         }
         echo '</li>';
+        print(zotero_article($titre,$periodiqueTitre,$numeroPeriodique,$prenom,$nom,$auteur,$dateprecise,$pagination,$issn));
     }
     echo '</ol>';
 }

@@ -1248,3 +1248,62 @@ function zotero_chapitre($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$
 
 	return $code_span;
 }
+
+function zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination){
+	
+	$code_span='<span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=';$code_span.=urlencode($titre);
+	$code_span.='&amp;rft.btitle=';
+	$code_span.=urlencode($ouvrageTitre);
+	$code_span.='&amp;rft.publisher=';
+	$code_span.=urlencode($editeurNom);
+	$code_span.='&amp;rft.aufirst=';
+	$code_span.=urlencode($prenom);
+	$code_span.='&amp;rft.aulast=';
+	$code_span.=urlencode($nom);
+	$code_span.='&amp;rft.au=';
+	$code_span.=$auteur;
+	$code_span.='&amp;rft.date=';
+	$code_span.=$annee;
+	$code_span.='&amp;rft.pages=';
+	$code_span.=$pagination;
+	$code_span.='"></span>';
+
+	return $code_span;
+}
+
+function script_schemaOrg($numeroPeriodique,$dateprecise,$periodiqueTitre,$issn,$pagination,$titre,$prenom,$nom){
+	$code_script='
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+            "@id": "#issue",
+            "@type": "PublicationIssue",
+            "issueNumber": "'.$numeroPeriodique.'",
+            "datePublished": "'.$dateprecise.'",
+            "isPartOf": {
+                "@id": "#periodical",
+                "@type": [
+                    "PublicationVolume",
+                    "Periodical"
+                ],
+                "name": "'.$periodiqueTitre.'",
+                "issn": [
+                    "'.$issn.'"
+                ],
+            }
+        },
+        {
+            "@type": "ScholarlyArticle",
+            "isPartOf": "#issue",
+            "pagination":"'.$pagination.'",
+            "name": "'.$titre.'",
+            "author": "'.$prenom.' '.$nom.'"
+        },
+      ]
+    }
+    </script>';
+	return $code_script;
+}

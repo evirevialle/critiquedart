@@ -1,4 +1,5 @@
 <?php
+    $this->layout = 'ajax';
 header('Content-type: text/json');
 header('Content-type: application/json; charset=utf-8');
 require_once(__DIR__.'/../../config/config.php');
