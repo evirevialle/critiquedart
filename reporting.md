@@ -28,3 +28,14 @@ Les fichiers de templates permettent d'afficher les requêtes du Controller et d
 * **Recherche** : avance.php contient les formulaires pour la recherche avancée et la recherche simple, la page resultats.php permet d'afficher les résultats, de les classer par articles, ouvrages, monographies, postfaces et préfaces. 
 * **Layout** : contient l'architecture par défaut des pages avec l'importation des fichiers css et javascript, la page default.php est la page par défaut du projet. 
 * **Fonctions** : contient les variables du projet et le fichier lib_fonctions.php qui contient les fonctions liés à la base de données mais aussi à l'interopérabilté des données pour les rendre détectables par Zotero et Schema.org
+
+## webroot : html/webroot/
+
+Les fichiers contenus dans le dossier webroot sont les images du projet, les feuilles de style CSS et les fichiers javascript de l'application.  
+
+* **Critiques** : Ce dossier contient un dossier pour chaque critique contenant le fichier biblio.csv qui permet d'afficher les principaux périodiques dans lesquelles les critiques d'arts ont publiés.
+* **CSS** : Ce dossier contient les feuilles de styles CSS pour la mise en page du site.
+* **JS** : Ce dossier contient les fichiers javascript permettant le fonctionnement de l'application.
+* **Download** : Ce dossier contient les élements qui sont affichés dans la page actualités et les fichiers qu'on peut télécharger dans la page données ouvertes.
+* **Logos** : Ce dossier contient les logos du footer.
+* **img** : Ce dossier contient les différentes images liés à l'application comme les ic
