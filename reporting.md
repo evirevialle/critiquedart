@@ -38,4 +38,4 @@ Les fichiers contenus dans le dossier webroot sont les images du projet, les feu
 * **JS** : Ce dossier contient les fichiers javascript permettant le fonctionnement de l'application.
 * **Download** : Ce dossier contient les élements qui sont affichés dans la page actualités et les fichiers qu'on peut télécharger dans la page données ouvertes.
 * **Logos** : Ce dossier contient les logos du footer.
-* **img** : Ce dossier contient les différentes images liés à l'application comme les ic
+* **img** : Ce dossier contient les différentes images liés à l'application comme les icones.
