@@ -21,9 +21,9 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 			La base est interopérable avec les technologies du Web de données et donc interrogeable via Isidore, Hal et les outils comme Zotero ou Mendeley.
 		</p>
 	<div id="tabs" style="display:flex">
-        <h3 style='margin-left:90px;' onClick="selView(1, this)">Recherche simple</h3>
+        <h3 class="tabRecherche" style='margin-left:90px;' onClick="selView(1, this)">Recherche simple</h3>
 		<h3>&nbsp;/&nbsp;</h3>
-        <h3 onClick="selView(2, this)">Recherche avancee</h3>
+        <h3 class="tabRecherche" onClick="selView(2, this)">Recherche avancée</h3>
 	</div>
 <div class="tabcontent">
 <div id="indextab" class="tabpanel" style="display:inline">
@@ -52,7 +52,7 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 </div>
 <div id="avancetab" class="tabpanel" style="display:none">
 
-		<?= $this->Form->create(null, ['type' => 'get', 'url' => '/recherche/resultats']) ?>
+		<?= $this->Form->create(null, ['id'=>'avancee','type' => 'get', 'url' => '/recherche/resultats']) ?>
 		<input type="hidden" name="type" value="det">
  			
 			<!-- Si vous n'avez qu'un auteur à selectionner; cliquez <a href="javascript:mono()">ici</a>) -->
@@ -61,7 +61,7 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 				<p><label class="control-label col-sm-8">Dans le titre: </label>
 				<input name="critique_titre" type="text" size="35" maxlength="100" style="width: 350px;" /></p>
 				<p><label class="control-label col-sm-8">Dans le complément titre: </label>
-				<input name="cpl_critique" type="text" size="35" maxlength="100" style="width: 350px;" /></p>
+				<input name="cpl_titre" type="text" size="35" maxlength="100" style="width: 350px;" /></p>
 			</fieldset>
 
 			<fieldset class="rechercher_fieldset">
@@ -77,8 +77,8 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 		        <label class="control-label col-sm-8">Attribution<br /></label>
 		        <select name="type_critique" class="rechercher_comboBox">
 		            <option label=""></option>
-		            <option value="certifie">Auteur certifié</option>
-		            <option value="attribue">Attribué àl'auteur</option>
+		            <option value="certifié">Auteur certifié</option>
+		            <option value="attribué">Attribué àl'auteur</option>
 		        </select>
 		        </p>
 		        <p>
@@ -149,7 +149,7 @@ require_once(__DIR__.'/../fonctions/lib_fonctions.php');
 </div>
 </div>
 	  
-<!--<script>
+<script>
 function raz() {
 	//alert('tester');
 	document.getElementById('raz').value="true";
@@ -157,7 +157,7 @@ function raz() {
 
 function avance(){
 	// Selecteur de formulaire
-	switch (document.forms.avancee.typeCritique.selectedIndex) {
+	switch (document.forms.avancee.type_texte.selectedIndex) {
 		case 1:
 			// Revue
 			document.getElementById('LesRevues').style.visibility="visible";
@@ -205,5 +205,5 @@ function avance(){
 	}
 }
 
-</script>-->
+</script>
 </article>

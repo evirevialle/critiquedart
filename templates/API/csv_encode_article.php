@@ -43,7 +43,7 @@ $sql = "SELECT idCritique, nom, prenom, typeSignature, titreCritique, critiqueCo
 	if(isset($_GET['anneeEditionMax']) && $_GET['anneeEditionMax'] !='')$sql .= " AND annee <=".$_GET['anneeEditionMax'];
 	//echo $sql;
 	//$db_conn=mysql_connect("localhost", "root", "root");
-	$db_conn=mysqli_connect("localhost", "labexcap","omega3", "critiquesdart");
+	$db_conn=mysqli_connect("localhost", "labexcap","MEDI@98313", "critiquesdart");
 	mysqli_set_charset($db_conn, 'utf8');
 	mysqli_select_db($db_conn, "critiquesdart") or die('Problème de connexion à la base.');
     // output as an attachment

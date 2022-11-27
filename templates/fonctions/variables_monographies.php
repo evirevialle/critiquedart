@@ -11,3 +11,4 @@ $editeurNom = $mo->editeur->nom;
 $editeurVille = $mo->editeur->ville;
 $annee = $mo->annee;
 $pagination = $mo->pagination;
+$id = $mo->idCritiqueDart;

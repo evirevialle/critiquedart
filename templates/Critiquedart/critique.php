@@ -80,12 +80,12 @@ require_once(__DIR__.'/../../config/config.php');
         <li>Sources d'archives identifiées <a href="/webroot/critiques/<?= $critiquedart->pk_id_critiqueDart ?>/archives.pdf"><img src="/webroot/images/pdf.jpg" title="pour afficher le pdf cliquer sur le lien, pour télécharger le pdf click droit et enregister sous" alt="logo PDF" width="20" height="20"></a></li>
     </ul>
     <p></p>
-        <!--<ol>
+       <!-- <h4>Principales Collaborations</h4><p><ul>
          <?php foreach($periodique as $p) : ?>
-            <li><a href='/critiquedart/avance?type=det&period=<?= $p->titre ?>&nom=<?= $critiquedart->nom ?>&prenom=<?= $critiquedart->prenom ?>'><?= $p->titre ?></a></li>
+            <li><a href='/critiquedart/avance?type=det&period=<?= urlencode($p->titre) ?>&nom=<?= $critiquedart->nom ?>&prenom=<?= $critiquedart->prenom ?>'><?= $p->titre ?></a></li>
         <?php endforeach; ?>
-        </ol>-->
-<?php $fichier = fopen("/var/www/critiques_dart/webroot/critiques/".$critiquedart->pk_id_critiqueDart."/biblio.csv", "r");
+        </ul><p>-->
+<?php $fichier = fopen("critiques/".$critiquedart->pk_id_critiqueDart."/biblio.csv", "r");
 if($fichier!=NULL){
 	echo "<h4>Principales collaborations</h4>";
 	$lesCollaborations=array();

@@ -3,7 +3,7 @@ try
 {
     // On se connecte à MySQL
 	global $pdo;
-    $pdo = new PDO('mysql:host=localhost;dbname=critiquesdart;charset=utf8', 'labexcap', 'omega3');
+    $pdo = new PDO('mysql:host=localhost;dbname=critiquesdart;charset=utf8', 'labexcap', 'MEDI@98313');
 	$pdo->exec("SET CHARACTER SET utf8");
 }
 catch(Exception $e)

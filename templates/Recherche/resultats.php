@@ -7,22 +7,47 @@
 
 use Cake\Routing\Router;
 require_once(__DIR__.'/../fonctions/lib_fonctions.php');
+$uri = $this->request->getRequestTarget();
 ?>
 <article class='landing-intro'>
 <h2 id='ancre' class="std__title">Résultats de la recherche</h2>
-
 <?php
+	if($articles->find('all')->count() + $monographie->find('all')->count() + $introduction->find('all')->count + $coordinationsOuvrage->find('all')->count() + $preface->find('all')->count() + $postface->find('all')->count() + $chapitre->find('all')->count() === 0){
+		echo '<p>Veuillez recommencer en spécifiant davantage votre recherche</p>';
+        }
+else{
 
-echo '<p>Votre requête porte sur le terme: "<mark>';
+echo '<h3>Rappel de la requête</h3><ol>';
     if(!empty($_GET['text'])){
-    echo $_GET['text'];
+    echo '<li>'. $_GET['text'].'</li>';
 }else{
-    echo $_GET['auteur'].' ';
+    if(!empty($_GET['type_texte'])){
+ echo '<li>La critique est un(e) : <mark> '.$_GET['type_texte'].'</mark></li>';}
+   if(!empty($_GET['auteur'])){
+ echo "<li>L'auteur (ou un des auteurs) est :<mark> ".$_GET["auteur"]."</mark></li>"; }
+   if(!empty($_GET['critique_titre'])){
+echo '<li>titre de la critique :<mark> '.$_GET['critique_titre'].'</mark></li>';}
+    if(!empty($_GET['cpl_titre'])){
+ echo '<li>complément de titre :<mark> '.$_GET['cpl_titre'].'</mark></li>';}
+    if(!empty($_GET['revue'])){
+echo "<li>le nom de la revue est (ou contient la chaîne) :<mark> ".$_GET["revue"]."</mark></li>";}
+    if(!empty($_GET['ouvrage'])){
+echo "<li>la monographie est (ou contient la chaîne) :<mark> ".$_GET["ouvrage"]."</mark></li>";}
+    if(!empty($_GET['type_critique'])){
+ echo '<li>attribution :<mark> '.$_GET['type_critique'].'</mark></li>';}
+    if(!empty($_GET['type_signature'])){
+ echo '<li>type de signature :<mark> '.$_GET['type_signature'].'</mark></li>';}
+    if(!empty($_GET['dateMin'])){
+ echo '<li>date de debut : <mark> '.$_GET['dateMin'].'</mark></li>';}
+    if(!empty($_GET['dateMax'])){
+ echo '<li>date de fin : <mark> '.$_GET['dateMax'].'</mark></li>';}
 }
-echo '</mark>"</p>';
+echo '</ol>';
 
-?>
-<p id='navigation' style="text-align:right">
+
+if($_GET['type_texte']!= 'article'){
+
+print("<p id='navigation' style='text-align:right'>
 			<a href='#monographies' title='Aller directement aux monographies' style='color: #1f398f!important;'>Ouvrages</a>,
 			<a href='#coordinations' title='Aller directement aux coordinations d&rsquo;ouvrages' style='color: #1f398f!important;'>coordinations</a>,
 			<a href='#chapitres' title='Aller directement aux chapitres' style='color: #1f398f!important;'>collaborations</a>,
@@ -30,7 +55,10 @@ echo '</mark>"</p>';
 			<a href='#prefaces' title='Aller directement aux préfaces' style='color: #1f398f!important;'>préfaces</a>,
 			<a href='#postfaces' title='Aller directement aux postfaces' style='color: #1f398f!important;'>postfaces</a>,
 			<a href='#articles' title='Aller directement aux articles' style='color: #1f398f!important;'>articles</a>
-	   </p>
+	   </p>");
+}
+}
+?>
 <?php
 if($monographie->find('all')->count() != 0){
     echo '<h3 id="monographies">Ouvrages et ouvrages traduits ('.$monographie->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
@@ -67,11 +95,12 @@ if($monographie->find('all')->count() != 0){
         }
         echo '</li>';
         print(zotero_ouvrage($titre,$editeurVille,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
+        print(script_book($titre,$id,$prenom,$nom,$editeurNom));
     }
 
     echo '</ol>';
 }
-if($coordinationsOuvrage->find('all')->count() != 0){
+if($coordinationsOuvrage->find('all')->count() != 0 && $_GET['type_texte']!= 'article'){
     echo '<h3 id="coordinations">Coordinations d\'ouvrages ('.$coordinationsOuvrage->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($coordinationsOuvrage as $cdo){
@@ -132,6 +161,7 @@ if($chapitre->find('all')->count() != 0){
         }
         echo '</li>';
         print(zotero_chapitre($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
+        print(script_schemaOrg2($id,$titre,$pagination,$isbn,$ouvrageTitre,$prenom,$nom));
     }
     echo '</ol>';
 }
@@ -167,6 +197,8 @@ if($introduction->find('all')->count() != 0){
         }
         echo '</li>';
         print(zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
+        print(script_schemaOrg2($id,$titre,$pagination,$isbn,$ouvrageTitre,$prenom,$nom));
+       
     }
     echo '</ol>';
 }
@@ -202,6 +234,7 @@ if($preface->find('all')->count() != 0){
         }
         echo '</li>';
         print(zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
+        print(script_schemaOrg2($id,$titre,$pagination,$isbn,$ouvrageTitre,$prenom,$nom));
     }
     echo '</ol>';
 }
@@ -237,10 +270,12 @@ if($postface->find('all')->count() != 0){
         }
         echo '</li>';
         print(zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pagination));
+        print(script_schemaOrg2($id,$titre,$pagination,$isbn,$ouvrageTitre,$prenom,$nom));
     }
     echo '</ol>';
 }
 if($articles->find('all')->count() != 0){
+    print('<div id="navigation" align="right"><u>ordonner par :</u> <br>'.$this->Paginator->sort("nom", "auteur").', ' .$this->Paginator->sort("revue","revue").', '.$this->Paginator->sort("datePrecise","date").' </div>');
     echo '<h3 id="articles">Articles ('.$articles->find('all')->count().') <a href="#navigation" title="remonter">&uarr;</a></h3>';
     echo '<ol>';
     foreach($articles as $a){
@@ -272,6 +307,7 @@ if($articles->find('all')->count() != 0){
         }
         echo '</li>';
         print(zotero_article($titre,$periodiqueTitre,$numeroPeriodique,$prenom,$nom,$auteur,$dateprecise,$pagination,$issn));
+        print(script_schemaOrg($titre,$uri,$pagination,$prenom,$nom,$dateprecise,$periodiqueTitre,$numeroPeriodique,$issn));
     }
     echo '</ol>';
 }
@@ -335,6 +371,6 @@ foreach($critiquedart as $critique){
 
 
 echo '<strong><p style="text-align:right"><a href="/recherche/avance/">Recommencer la recherche</a> <a href="#navigation" title=Remonter>&uarr;</a></p></strong>';
-echo '<strong><p style="text-align:right">Nombres de références: '.$articles->find('all')->count() + $monographie->find('all')->count() + $introduction->find('all')->count() + $preface->find('all')->count() + $postface->find('all')->count() + $coordinationsOuvrage->find('all')->count() + $chapitre->find('all')->count().'</p></strong>';
+//echo '<strong><p style="text-align:right">Nombres de références: '.$articles->find('all')->count() + $monographie->find('all')->count() + $introduction->find('all')->count() + $preface->find('all')->count() + $postface->find('all')->count() + $coordinationsOuvrage->find('all')->count() + $chapitre->find('all')->count().'</p></strong>';
 ?>
 </article>

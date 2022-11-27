@@ -9,3 +9,5 @@ $editeurVille = $po->editeur->ville;
 $editeurNom = $po->editeur->nom;
 $annee = $po->annee;
 $pagination = $po->pagination;
+$id = $po->idCritiqueDart;
+$isbn = $po->ISBN;

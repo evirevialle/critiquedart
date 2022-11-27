@@ -225,14 +225,16 @@ class RechercheController extends AppController
     }
     private function detailedSearch(&$articles, &$chapitre,&$collection, &$coordinationsOuvrage,&$critiquesCollectif,&$introduction, &$monographie, &$postface, &$preface){
 
-        $titre_critique = $this->request->getQuery('critique_titre');
+        	$titre_critique = $this->request->getQuery('critique_titre');
 		$cpl_titre = $this->request->getQuery('cpl_titre');
 		$auteur = $this->request->getQuery('auteur');
 		$type_critique = $this->request->getQuery('type_critique');
 		$type_signature = $this->request->getQuery('type_signature');
 		$dateMin = $this->request->getQuery('dateMin');
-        $dateMax = $this->request->getQuery('dateMax');
+        	$dateMax = $this->request->getQuery('dateMax');
 		$type_texte = $this->request->getQuery('type_texte');
+        	$revue = $this->request->getQuery('revue');
+        	$ouvrage = $this->request->getQuery('ouvrage');
 
         //clé primaire du critique d'art
         /*if(empty($titre_critique.$cpl_titre.$auteur.$type_critique.$type_signature.$dateMin.$dateMax.$type_texte)){
@@ -241,6 +243,47 @@ class RechercheController extends AppController
             });
             return;
         }*/
+
+        if(empty($titre_critique.$cpl_titre.$auteur.$type_critique.$type_signature.$dateMin.$dateMax.$type_texte.$revue.$ouvrage)){
+            $articles->where(['Articles.idCritiqueDart'=> 0 ]);
+            $chapitre->where(['Chapitres.idCritiqueDart'=>0]);
+            $monographie->where(['Monographies.idCritiqueDart'=>0]);
+            $coordinationsOuvrage->where(['CoordinationsOuvrages.pk_id_ouvrage'=>0]);
+            $preface->where(['Prefaces.idCritiqueDart'=>0]);
+            $postface->where(['Postfaces.idCritiqueDart'=>0]);
+            $introduction->where(['Introductions.idCritiqueDart'=>0]);
+            return;
+        }
+        if(empty($titre_critique.$cpl_titre.$auteur.$type_critique.$type_signature.$dateMin.$dateMax.$revue.$ouvrage) && $type_texte === 'article'){
+            $articles->where(['Articles.idCritiqueDart'=> 0 ]);
+            $chapitre->where(['Chapitres.idCritiqueDart'=>0]);
+            $monographie->where(['Monographies.idCritiqueDart'=>0]);
+            $coordinationsOuvrage->where(['CoordinationsOuvrages.pk_id_ouvrage'=>0]);
+            $preface->where(['Prefaces.idCritiqueDart'=>0]);
+            $postface->where(['Postfaces.idCritiqueDart'=>0]);
+            $introduction->where(['Introductions.idCritiqueDart'=>0]);
+            return;
+        }
+        if(empty($titre_critique.$cpl_titre.$auteur.$type_signature.$dateMin.$dateMax.$revue.$ouvrage.$type_texte) && $type_critique === 'certifié'){
+            $articles->where(['Articles.idCritiqueDart'=> 0 ]);
+            $chapitre->where(['Chapitres.idCritiqueDart'=>0]);
+            $monographie->where(['Monographies.idCritiqueDart'=>0]);
+            $coordinationsOuvrage->where(['CoordinationsOuvrages.pk_id_ouvrage'=>0]);
+            $preface->where(['Prefaces.idCritiqueDart'=>0]);
+            $postface->where(['Postfaces.idCritiqueDart'=>0]);
+            $introduction->where(['Introductions.idCritiqueDart'=>0]);
+            return;
+        }
+        if(empty($titre_critique.$cpl_titre.$auteur.$type_critique.$dateMin.$dateMax.$revue.$ouvrage.$type_texte) && $type_signature === 'patronyme'){
+            $articles->where(['Articles.idCritiqueDart'=> 0 ]);
+            $chapitre->where(['Chapitres.idCritiqueDart'=>0]);
+            $monographie->where(['Monographies.idCritiqueDart'=>0]);
+            $coordinationsOuvrage->where(['CoordinationsOuvrages.pk_id_ouvrage'=>0]);
+            $preface->where(['Prefaces.idCritiqueDart'=>0]);
+            $postface->where(['Postfaces.idCritiqueDart'=>0]);
+            $introduction->where(['Introductions.idCritiqueDart'=>0]);
+            return;
+        }
 
         if(!empty($titre_critique)){
             $articles->where(['Articles.titreCritique LIKE'=>'%'.$titre_critique.'%']);
@@ -318,14 +361,14 @@ class RechercheController extends AppController
             $postface->where(['Postfaces.typeSignature LIKE'=>$type_signature]);
             $introduction->where(['Introductions.typeSignature LIKE'=>$type_signature]);
             $preface->where(['Prefaces.typeSignature LIKE'=>$type_signature]);
-            $monographie->where(['Monograhies.typeSignature LIKE'=>$type_signature]);
+            $monographie->where(['Monographies.typeSignature LIKE'=>$type_signature]);
         }
         if(!empty($dateMin)){
             $articles->where(['Articles.annee >='=>$dateMin]);
             $chapitre->where(['Chapitres.annee >='=>$dateMin]);
             $postface->where(['Postfaces.annee >='=>$dateMin]);
             $introduction->where(['Introductions.annee >='=>$dateMin]);
-            $coordinationsOuvrage->where(['CoordinationsOuvrages >='=>$dateMin]);
+            $coordinationsOuvrage->where(['CoordinationsOuvrages.annee >='=>$dateMin]);
             $preface->where(['Prefaces.annee >='=>$dateMin]);
             $monographie->where(['Monographies.annee >='=>$dateMin]);
         }
@@ -334,7 +377,7 @@ class RechercheController extends AppController
             $chapitre->where(['Chapitres.annee <='=>$dateMax]);
             $postface->where(['Postfaces.annee <='=>$dateMax]);
             $introduction->where(['Introductions.annee <='=>$dateMax]);
-            $coordinationsOuvrage->where(['CoordinationsOuvrages <='=>$dateMax]);
+            $coordinationsOuvrage->where(['CoordinationsOuvrages.annee <='=>$dateMax]);
             $preface->where(['Prefaces.annee <='=>$dateMax]);
             $monographie->where(['Monographies.annee <='=>$dateMax]);
         }
@@ -346,7 +389,17 @@ class RechercheController extends AppController
             $preface->where(['Prefaces.typeCritique LIKE'=>'%'.$type_texte.'%']);
             $monographie->where(['Monographies.typeCritique LIKE'=>'%'.$type_texte.'%']);
         }
+        if(!empty($revue)){
+            $articles->where(['Articles.revue LIKE'=>'%'.$revue.'%']);
+        }
+        if(!empty($ouvrage)){
+            $chapitre->where(['Chapitres.ouvrageTitre LIKE'=>'%'.$ouvrage.'%']);
+            $postface->where(['Postfaces.ouvrageTitre LIKE'=>'%'.$ouvrage.'%']);
+            $preface->where(['Prefaces.ouvrageTitre LIKE'=>'%'.$ouvrage.'%']);
+            $introduction->where(['Introductions.ouvrageTitre LIKE'=>'%'.$ouvrage.'%']);
+	    $coordinationsOuvrage->where(['CoordinationsOuvrages.titre LIKE'=>'%'.$ouvrage.'%']);
 
+        }
 
     }
 

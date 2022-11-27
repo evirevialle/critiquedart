@@ -3921,3 +3921,8 @@ border-radius: 4px;
     font: italic bold 22px/20px "Alegreya";
 }
 .ligne img.figure {vertical-align: bottom; }
+
+.tabRecherche:hover{
+	border-bottom:1px solid black;
+	cursor : pointer;
+}

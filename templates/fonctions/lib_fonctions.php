@@ -134,7 +134,7 @@ function afficherTousLesAuteursFormOption(){
 	$req_auteurs=$pdo->query($sql) or die('erreur SQL dans la fonction afficherTousLesAuteursFormOption()'); 
 	while ($r = $req_auteurs->fetch())
     {
-		print('<option value="'.$r['pk_id_critiqueDart'].'">'.$r['prenom'].' '.$r['nom'].'</option>');
+		print('<option value="'.$r['nom'].'">'.$r['prenom'].' '.$r['nom'].'</option>');
     }
 }
 function afficherTousLesAuteursFormOptionSansId(){
@@ -317,7 +317,7 @@ function afficherAuteursParLettre($lettre){
     while($r = $req_auteurs->fetch())
     {
     	
-		print('<p><a href="'.$r["URL_WP"].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
+		print('<p><a href="critique/'.$r["pk_id_critiqueDart"].'">'.$r['prenom'].' '.$r['nom'].' ('.$r['anneeNaissance'].'-'.$r['anneeMort'].')</a></p>');
     }
     
 	return($r);
@@ -1271,39 +1271,80 @@ function zotero($titre,$ouvrageTitre,$editeurNom,$prenom,$nom,$auteur,$annee,$pa
 	return $code_span;
 }
 
-function script_schemaOrg($numeroPeriodique,$dateprecise,$periodiqueTitre,$issn,$pagination,$titre,$prenom,$nom){
+function script_schemaOrg($titre,$uri,$pagination,$prenom,$nom,$dateprecise,$periodiqueTitre,$numeroPeriodique,$issn){
 	$code_script='
-
-    <script type="application/ld+json">
+	<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
-        {
-            "@id": "#issue",
-            "@type": "PublicationIssue",
-            "issueNumber": "'.$numeroPeriodique.'",
+     {
+        "@type": "ScholarlyArticle",
+       	"name" : "'.$titre.'",
+        "sameAs" : "'.$uri.'",
+        "pagination" : "'.$pagination.'",
+        "description" : "Ceci est un article de périodique",
+        "author" : "'.$prenom.' '.$nom.'",
+        "isPartOf":{
+        	"@id":"#issue",
+            "@type":"PublicationIssue",
             "datePublished": "'.$dateprecise.'",
-            "isPartOf": {
-                "@id": "#periodical",
-                "@type": [
-                    "PublicationVolume",
-                    "Periodical"
-                ],
+            "isPartOf":{
+            	"@id":"#issue",
+                "@type":["Periodical","PublicationVolume"],
                 "name": "'.$periodiqueTitre.'",
-                "issn": [
-                    "'.$issn.'"
-                ],
-            }
-        },
-        {
-            "@type": "ScholarlyArticle",
-            "isPartOf": "#issue",
-            "pagination":"'.$pagination.'",
-            "name": "'.$titre.'",
-            "author": "'.$prenom.' '.$nom.'"
-        },
-      ]
-    }
+                "volumeNumber":"'.$numeroPeriodique.'",
+                "issn":"'.$issn.'"
+                }
+           }
+        }
+        ]
+        }
+        
     </script>';
 	return $code_script;
 }
+function script_book($titre,$id,$prenom,$nom,$editeurNom){
+	$script = '<script type="application/ld+json">
+	{
+	 "@context": "https://schema.org",
+	 "@graph": [
+	{ "@type": "Book",
+		"name": "'.$titre.'",
+	   "author":{
+		   "@id": "http://'.$_SERVER['SERVER_NAME'].'/critiquedart/critique/'.$id.'",
+		   "name" : "'.$prenom.' '.$nom.'"
+		   },
+	   "publisher" : {
+		   "@type": "Organization",
+		   "name" : "'.$editeurNom.'"
+		   }
+	   }
+	   ]
+	   }
+</script>';
+
+	   return $script;
+}
+function script_schemaOrg2($id,$titre,$pagination,$isbn,$ouvrageTitre,$prenom,$nom){
+
+$script = '<script type="application/ld+json">
+	{
+	 "@context": "https://schema.org",
+	 "@graph": [
+	{ "@type": "Chapter",
+    	"@id":"http://'.$_SERVER['SERVER_NAME'].'/critiquedart/critique/'.$id.'",
+        "name":"'.$itre.'",
+        "pagination":"'.$pagination.'",
+        "isPartOf":{
+        	"@id":"'.$isbn.'",
+            "@type":"Book",
+            "name":"'.$ouvrageTitre.'",
+            "author":"'.$prenom.' '.$nom.'"
+            }
+            }
+            ]
+            }
+         	</script>';
+return $script;
+
+		}

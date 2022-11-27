@@ -31,7 +31,7 @@
     }
     // Using the function
 $sql = "SELECT `titre`, `ISSN`, `couverture` as couverture_temporelle, `ville` FROM `periodique` ORDER BY titre ASC ";
-    $db_conn=mysqli_connect("localhost", "labexcap","omega3", "critiquesdart");
+    $db_conn=mysqli_connect("localhost", "labexcap","MEDI@98313", "critiquesdart");
 	mysqli_set_charset($db_conn, 'utf8');
 	mysqli_select_db($db_conn, "critiquesdart") or die('Problème de connexion à la base.');
 // output as an attachment

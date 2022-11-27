@@ -3,6 +3,6 @@
 	if(isset($_SESSION['user'])){
 		//echo "vous êtes conecté";
 		unset($_SESSION['user']);
-		echo '<script language="javascript">document.location.replace("index");</script>';
+		echo '<script language="javascript">document.location.replace("home");</script>';
 	}
 ?>

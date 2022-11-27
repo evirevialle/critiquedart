@@ -8,3 +8,5 @@ $editeurVille = $pr->editeur->ville;
 $editeurNom = $pr->editeur->nom;
 $annee = $pr->annee;
 $pagination = $pr->pagination;
+$id = $pr->idCritiqueDart;
+$isbn = $pr->ISBN;
