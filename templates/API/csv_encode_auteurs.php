@@ -33,7 +33,7 @@
 $sql = "SELECT `pk_id_critiqueDart` as id, `prenom`, `nom`, `anneeNaissance` as naissance, `anneeMort` as mort, ISNI FROM `critiquedart` WHERE 1 ORDER BY nom";
 	//echo $sql;
 	//$db_conn=mysql_connect("localhost", "root", "root");
-	$db_conn=mysqli_connect("localhost", "labexcap","MEDI@98313", "critiquesdart");
+	$db_conn=mysqli_connect("localhost", "","", "critiquesdart");
 	mysqli_set_charset($db_conn, 'utf8');
 	mysqli_select_db($db_conn, "critiquesdart") or die('Problème de connexion à la base.');
     // output as an attachment
